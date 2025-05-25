@@ -1,6 +1,6 @@
 //import * as React from "react";
 import './index.css'
-import {type CSSProperties, type ReactElement, useEffect, useRef, useState} from "react";
+import {type CSSProperties, type ReactElement, type SyntheticEvent, useEffect, useRef, useState} from "react";
 import {GrClose} from "react-icons/gr";
 import {IoMdPause, IoMdPlay } from "react-icons/io";
 import { IoVolumeMedium } from "react-icons/io5";
@@ -8,12 +8,16 @@ import { IoVolumeMedium } from "react-icons/io5";
 
 import { TbPlayerTrackNextFilled } from "react-icons/tb";
 import { TbPlayerTrackPrevFilled } from "react-icons/tb";
+import { TbRepeat } from "react-icons/tb";
+import { TbRepeatOff } from "react-icons/tb";
+
 
 
 type propsAudio={
     url: string,//"https://dl.dropboxusercontent.com/scl/fi/r8kxyy1yyz71wbhefao64/mikhail-krug-kolshhik.mp3?rlkey=tyy8vpof7der2bxgp3x3ylc7v&amp;st=otkmjber&amp;dl=0"
     autoPlay?: boolean,
     controls?:boolean,
+    loop?: boolean,
     preload?:'none'|'metadata'|'auto'|''
     label?: string|ReactElement|null|undefined,
     onError?: (error: any) => void|undefined,
@@ -23,6 +27,9 @@ type propsAudio={
     onPrevEvent?: () => void,
     onNextEvent?: () => void,
     onClose?: () => void,
+    useButtonClose?: boolean,
+    useButtonOpenPrevNext?: boolean,
+    onVolumeChange?:(event:SyntheticEvent<HTMLAudioElement>)=> void
     style?:CSSProperties
     
 
@@ -32,6 +39,7 @@ const iconSize=25;
 export default function BsrAudio(props:propsAudio) {
     const audioRef = useRef<HTMLAudioElement>(null);
     const [volume, setVolume] = useState(0.5);
+    const [loop, setLoop] = useState(props.loop??false)
     const [currentTime, setCurrentTime] = useState(0);
     const [button, setButton] = useState(0)
     const [duration, setDuration] = useState(0);
@@ -63,6 +71,22 @@ export default function BsrAudio(props:propsAudio) {
 
     }, [volume]);
 
+    const renderLoop = () => {
+        if(loop){
+            return (
+                <TbRepeat size={20} className={'audio-icon'} onClick={()=>{
+                    setLoop(!loop);
+                }}/>
+            )
+        }else{
+            return (
+                <TbRepeatOff size={20} className={'audio-icon'} onClick={()=>{
+                    setLoop(!loop);
+                }}/>
+            )
+        }
+    }
+
     const handleLoadedMetadata = () => {
         setDuration(audioRef.current!.duration);
     };
@@ -90,7 +114,7 @@ export default function BsrAudio(props:propsAudio) {
     const handleVolumeChange = (event:any) => {
         setVolume(parseFloat(event.target.value));
     };
-    function renderButton(){
+    const renderButton=()=>{
         switch (button){
             case 0:{
                 return (
@@ -111,10 +135,15 @@ export default function BsrAudio(props:propsAudio) {
     }
 
     return (
-        <div className={'audio-box no-select'} style={props.style}>
+        <div className={'audio-box no-select'} style={props.style} >
             <div className={'box-flex'} >
                 <div className={'audio-label-host'} >{props.label}</div>
-                <GrClose size={20}  className="audio-icon" onClick={()=>{
+                <GrClose
+                    style={{display: props.useButtonClose ? 'block' : 'none'}}
+                    id={'a-b-1'}
+                    size={20}
+                    className="audio-icon"
+                    onClick={()=>{
                     if(props.onClose) {
                         props.onClose()
                     }
@@ -125,6 +154,7 @@ export default function BsrAudio(props:propsAudio) {
                 autoPlay={props.autoPlay}
                 src={props.url}
                 ref={audioRef}
+                loop={loop}
                 onLoadedMetadata={handleLoadedMetadata}
                 onTimeUpdate={handleTimeUpdate}
                 onPlay={() => {
@@ -143,6 +173,11 @@ export default function BsrAudio(props:propsAudio) {
                     if(props.onEnded ){
                         props.onEnded();
                     }
+                }}
+                onVolumeChange={(event:SyntheticEvent<HTMLAudioElement>)        => {
+                   if(props.onVolumeChange){
+                       props.onVolumeChange(event);
+                   }
                 }}
 
             />
@@ -166,42 +201,51 @@ export default function BsrAudio(props:propsAudio) {
             </div>
 
                 <div className={'box-flex'}>
-                    <div style={{width:'100%'}}></div>
-                    <IoVolumeMedium className={'icon-volume'} size={30}/>
-                    <input
-                        className={'audio-input-volume'}
-                        type="range"
-                        min="0"
-                        max="1"
-                        step="0.01"
-                        value={volume}
-                        onChange={handleVolumeChange}
-                    />
+                    <div style={{width:200}}>
+                        {renderLoop()}
+                    </div>
+                    <div className={'box-flex'} style={{alignItems:'center',justifyContent:'center'}}>
+                        <TbPlayerTrackPrevFilled
+                            style={{visibility: props.useButtonOpenPrevNext ? 'visible' : 'hidden'}}
+                            id={'a-b-2'}
+                            onClick={()=>{
+                                if(props.onPrevEvent){
+                                    props.onPrevEvent();
+                                }
+                            }}
+                            size={iconSize}
+                            className={'audio-icon'}/>
+                        {
+                            renderButton()
+                        }
+                        <TbPlayerTrackNextFilled
+                            style={{visibility: props.useButtonOpenPrevNext ? 'visible' : 'hidden'}}
+                            id={'a-b-3'}
+                            onClick={()=>{
+                                if(props.onNextEvent){
+                                    props.onNextEvent();
+                                }
+                            }}
+                            size={iconSize}
+                            className={'audio-icon'}/>
+                    </div>
+                    <div className={'box-flex'} style={{width:200}}>
 
+                        <IoVolumeMedium className={'icon-volume'} size={25}/>
+                        <input
+                            className={'audio-input-volume'}
+                            type="range"
+                            min="0"
+                            max="1"
+                            step="0.01"
+                            value={volume}
+                            onChange={handleVolumeChange}
+                        />
+                    </div>
 
             </div>
 
-            <div style={{textAlign:'center'}}>
-                <TbPlayerTrackPrevFilled
-                    onClick={()=>{
-                        if(props.onPrevEvent){
-                            props.onPrevEvent();
-                        }
-                    }}
-                    size={iconSize} 
-                    className={'audio-icon'}/>
-                {
-                    renderButton()
-                }
-                <TbPlayerTrackNextFilled
-                    onClick={()=>{
-                        if(props.onNextEvent){
-                            props.onNextEvent();
-                        }
-                    }}
-                    size={iconSize} 
-                    className={'audio-icon'}/>
-            </div>
+
 
 
 
@@ -220,67 +264,3 @@ const formatTime = (time:number,isTotal=false) => {
     return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 };
 
-
-
-
-// export class BsrAudio  extends React.Component<propsAudio> {
-//     private refAudio=React.createRef<HTMLAudioElement>();
-//     private refButtonPlay=React.createRef<HTMLButtonElement>();
-//     private refCurrentTime=React.createRef<HTMLDivElement>();
-//     private refTotalTime=React.createRef<HTMLDivElement>();
-//     constructor(props:propsAudio) {
-//         super(props);
-//     }
-//     componentDidMount() {
-//         this.refAudio.current!.onloadedmetadata=ev => {
-//             this.refCurrentTime.current!.innerText='0.00'
-//             // @ts-ignore
-//             this.refTotalTime.current!.innerText=Math.floor(ev.target.duration/60) +"."+Math.floor(ev.target.duration%60)
-//             console.log(ev)
-//         }
-//         // this.refAudio.current!.play().catch((error) => {
-//         //
-//         //     alert(error);
-//         //     document.addEventListener('click', () => {
-//         //         this.refAudio.current!.play()
-//         //     }, { once: true } )
-//         //
-//         //
-//         // })
-//         // this.refAudio.current!.autoplay=this.props.autoPlay??false
-//         // this.refAudio.current!.volume=0
-//         // this.refButtonPlay.current!.click();
-//     }
-//
-//     render() {
-//         return (
-//             <div className="bsrAudio">
-//
-//                 <audio
-//                     ref={this.refAudio}
-//                     preload={'audio'}
-//                     autoPlay={true}
-//                     src={this.props.url}
-//
-//
-//                 >
-//
-//                 </audio>
-//                 <div style={{display: 'flex'}}>
-//                     <div ref={this.refCurrentTime}></div>
-//                     <div ref={this.refTotalTime}></div>
-//                 </div>
-//                 <button
-//                     onClick={()=>{
-//                         setTimeout(()=>{
-//                             this.refAudio.current!.play().then()
-//                         },1000)
-//
-//                     }}
-//                     ref={this.refButtonPlay}
-//                 >play</button>
-//
-//             </div>
-//         );
-//     }
-// }
