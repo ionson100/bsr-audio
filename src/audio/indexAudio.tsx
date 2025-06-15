@@ -272,34 +272,42 @@ export  class BsrAudio extends React.Component<propsAudio, state>{
                         {this.renderRandom()}
                     </div>
                     <div className={'box-flex host-buttons'}>
-                        <svg onClick={() => {
-                            if (this.props.onPrevEvent) {
-                                this.props.onPrevEvent();
-                            }
-                        }} stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" id="a-b-2"
-                             className="audio-icon" height="25" width="25" xmlns="http://www.w3.org/2000/svg"
-                             style={{visibility: this.props.useButtonOpenPrevNext ? 'visible' : 'hidden'}}>
-                            <path
-                                d="M20.341 4.247l-8 7a1 1 0 0 0 0 1.506l8 7c.647 .565 1.659 .106 1.659 -.753v-14c0 -.86 -1.012 -1.318 -1.659 -.753z"></path>
-                            <path
-                                d="M9.341 4.247l-8 7a1 1 0 0 0 0 1.506l8 7c.647 .565 1.659 .106 1.659 -.753v-14c0 -.86 -1.012 -1.318 -1.659 -.753z"></path>
-                        </svg>
+                        {
+                            this.props.useButtonOpenPrevNext&&(
+                                <svg onClick={() => {
+                                    if (this.props.onPrevEvent) {
+                                        this.props.onPrevEvent();
+                                    }
+                                }} stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" id="a-b-2"
+                                     className="audio-icon" height="25" width="25" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M20.341 4.247l-8 7a1 1 0 0 0 0 1.506l8 7c.647 .565 1.659 .106 1.659 -.753v-14c0 -.86 -1.012 -1.318 -1.659 -.753z"></path>
+                                    <path
+                                        d="M9.341 4.247l-8 7a1 1 0 0 0 0 1.506l8 7c.647 .565 1.659 .106 1.659 -.753v-14c0 -.86 -1.012 -1.318 -1.659 -.753z"></path>
+                                </svg>
+                            )
+                        }
+
 
                         {
                             this.renderButton()
                         }
-                        <svg  onClick={() => {
-                            if (this.props.onNextEvent) {
-                                this.props.onNextEvent();
-                            }
-                        }} stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" id="a-b-3"
-                              className="audio-icon" height="25" width="25" xmlns="http://www.w3.org/2000/svg"
-                              style={{visibility: this.props.useButtonOpenPrevNext ? 'visible' : 'hidden'}}>
-                            <path
-                                d="M2 5v14c0 .86 1.012 1.318 1.659 .753l8 -7a1 1 0 0 0 0 -1.506l-8 -7c-.647 -.565 -1.659 -.106 -1.659 .753z"></path>
-                            <path
-                                d="M13 5v14c0 .86 1.012 1.318 1.659 .753l8 -7a1 1 0 0 0 0 -1.506l-8 -7c-.647 -.565 -1.659 -.106 -1.659 .753z"></path>
-                        </svg>
+                        {
+                            this.props.useButtonOpenPrevNext&&(
+                                <svg  onClick={() => {
+                                    if (this.props.onNextEvent) {
+                                        this.props.onNextEvent();
+                                    }
+                                }} stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" id="a-b-3"
+                                      className="audio-icon" height="25" width="25" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M2 5v14c0 .86 1.012 1.318 1.659 .753l8 -7a1 1 0 0 0 0 -1.506l-8 -7c-.647 -.565 -1.659 -.106 -1.659 .753z"></path>
+                                    <path
+                                        d="M13 5v14c0 .86 1.012 1.318 1.659 .753l8 -7a1 1 0 0 0 0 -1.506l-8 -7c-.647 -.565 -1.659 -.106 -1.659 .753z"></path>
+                                </svg>
+                            )
+                        }
+
                     </div>
                     <div className={'box-flex host-volume'}>
 
@@ -395,34 +403,42 @@ export  class BsrAudio extends React.Component<propsAudio, state>{
                         }
                     </div>
                     <div className={'box-flex host-buttons-mode2'}>
-                        <svg onClick={() => {
-                            if (this.props.onPrevEvent) {
-                                this.props.onPrevEvent();
-                            }
-                        }} stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" id="a-b-2"
-                             className="audio-icon" height="20" width="20" xmlns="http://www.w3.org/2000/svg"
-                             style={{visibility: this.props.useButtonOpenPrevNext ? 'visible' : 'hidden'}}>
-                            <path
-                                d="M20.341 4.247l-8 7a1 1 0 0 0 0 1.506l8 7c.647 .565 1.659 .106 1.659 -.753v-14c0 -.86 -1.012 -1.318 -1.659 -.753z"></path>
-                            <path
-                                d="M9.341 4.247l-8 7a1 1 0 0 0 0 1.506l8 7c.647 .565 1.659 .106 1.659 -.753v-14c0 -.86 -1.012 -1.318 -1.659 -.753z"></path>
-                        </svg>
+                        {
+                            this.props.useButtonOpenPrevNext&&(
+                                <svg onClick={() => {
+                                    if (this.props.onPrevEvent) {
+                                        this.props.onPrevEvent();
+                                    }
+                                }} stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" id="a-b-2"
+                                     className="audio-icon" height="20" width="20" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M20.341 4.247l-8 7a1 1 0 0 0 0 1.506l8 7c.647 .565 1.659 .106 1.659 -.753v-14c0 -.86 -1.012 -1.318 -1.659 -.753z"></path>
+                                    <path
+                                        d="M9.341 4.247l-8 7a1 1 0 0 0 0 1.506l8 7c.647 .565 1.659 .106 1.659 -.753v-14c0 -.86 -1.012 -1.318 -1.659 -.753z"></path>
+                                </svg>
+                            )
+                        }
+
 
                         {
                             this.renderButton(2)
                         }
-                        <svg  onClick={() => {
-                            if (this.props.onNextEvent) {
-                                this.props.onNextEvent();
-                            }
-                        }} stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" id="a-b-3"
-                              className="audio-icon" height="20" width="20" xmlns="http://www.w3.org/2000/svg"
-                              style={{visibility: this.props.useButtonOpenPrevNext ? 'visible' : 'hidden'}}>
-                            <path
-                                d="M2 5v14c0 .86 1.012 1.318 1.659 .753l8 -7a1 1 0 0 0 0 -1.506l-8 -7c-.647 -.565 -1.659 -.106 -1.659 .753z"></path>
-                            <path
-                                d="M13 5v14c0 .86 1.012 1.318 1.659 .753l8 -7a1 1 0 0 0 0 -1.506l-8 -7c-.647 -.565 -1.659 -.106 -1.659 .753z"></path>
-                        </svg>
+                        {
+                            this.props.useButtonOpenPrevNext&&(
+                                <svg  onClick={() => {
+                                    if (this.props.onNextEvent) {
+                                        this.props.onNextEvent();
+                                    }
+                                }} stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" id="a-b-3"
+                                      className="audio-icon" height="20" width="20" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M2 5v14c0 .86 1.012 1.318 1.659 .753l8 -7a1 1 0 0 0 0 -1.506l-8 -7c-.647 -.565 -1.659 -.106 -1.659 .753z"></path>
+                                    <path
+                                        d="M13 5v14c0 .86 1.012 1.318 1.659 .753l8 -7a1 1 0 0 0 0 -1.506l-8 -7c-.647 -.565 -1.659 -.106 -1.659 .753z"></path>
+                                </svg>
+                            )
+                        }
+
                     </div>
 
                     <div className={'box-flex'}>
