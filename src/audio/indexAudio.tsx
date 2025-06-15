@@ -340,10 +340,11 @@ export  class BsrAudio extends React.Component<propsAudio, state>{
         return (
             <audio
 
-                autoPlay={this.props.autoPlay}
+                autoPlay={this.props.autoPlay??false}
+                preload={this.props.preload??'auto'}
                 src={this.props.url}
                 ref={this.audioRef}
-                loop={this.state.loop}
+                loop={this.state.loop??false}
                 onLoadedMetadata={this.handleLoadedMetadata}
                 onTimeUpdate={this.handleTimeUpdate}
 

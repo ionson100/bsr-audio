@@ -238,7 +238,8 @@ var BsrAudio = /** @class */ (function (_super) {
     };
     BsrAudio.prototype.renderAudio = function () {
         var _this = this;
-        return (jsxRuntime.jsx("audio", { autoPlay: this.props.autoPlay, src: this.props.url, ref: this.audioRef, loop: this.state.loop, onLoadedMetadata: this.handleLoadedMetadata, onTimeUpdate: this.handleTimeUpdate, onPlay: function () {
+        var _a, _b, _c;
+        return (jsxRuntime.jsx("audio", { autoPlay: (_a = this.props.autoPlay) !== null && _a !== void 0 ? _a : false, preload: (_b = this.props.preload) !== null && _b !== void 0 ? _b : 'auto', src: this.props.url, ref: this.audioRef, loop: (_c = this.state.loop) !== null && _c !== void 0 ? _c : false, onLoadedMetadata: this.handleLoadedMetadata, onTimeUpdate: this.handleTimeUpdate, onPlay: function () {
                 _this.setState({ button: -1 });
                 if (_this.props.onPlay) {
                     _this.props.onPlay();
