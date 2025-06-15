@@ -22,6 +22,10 @@ type propsAudio = {
     style?: CSSProperties;
     volume?: number;
     onLoadDurationTrack?: (time: number) => void;
+    mode?: 'mode1' | 'mode2';
+    random?: boolean;
+    useButtonRandom?: boolean;
+    onRandomChange?: (state: boolean) => void;
 };
 type state = {
     volume: number;
@@ -30,11 +34,14 @@ type state = {
     button: number;
     duration: number;
     slider: number;
+    random?: boolean;
 };
-export declare class BsrAudio extends React.Component<propsAudio, state> {
+export default class BsrAudio extends React.Component<propsAudio, state> {
     audioRef: React.RefObject<HTMLAudioElement>;
+    curMode: string;
     constructor(props: propsAudio);
     componentDidMount(): void;
+    private renderRandom;
     private renderLoop;
     private handleLoadedMetadata;
     private handleTimeUpdate;
@@ -47,6 +54,9 @@ export declare class BsrAudio extends React.Component<propsAudio, state> {
     SetVolume: (volume: number) => void;
     SetTimer(time: number): void;
     GerAudioTag: () => React.RefObject<HTMLAudioElement>;
+    private mode1;
+    private renderAudio;
+    private mode2;
     render(): import("react/jsx-runtime").JSX.Element;
 }
 export {};
