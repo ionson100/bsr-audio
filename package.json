@@ -1,30 +1,72 @@
 {
-  "name": "bsr-audio",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
-  },
-  "devDependencies": {
-    "@eslint/js": "^9.25.0",
-    "@types/react": "^19.1.2",
-    "@types/react-dom": "^19.1.2",
-    "@vitejs/plugin-react": "^4.4.1",
-    "eslint": "^9.25.0",
-    "eslint-plugin-react-hooks": "^5.2.0",
-    "eslint-plugin-react-refresh": "^0.4.19",
-    "globals": "^16.0.0",
-    "react-icons": "^5.5.0",
-    "typescript": "~5.8.3",
-    "typescript-eslint": "^8.30.1",
-    "vite": "^6.3.5"
-  }
+    "name": "bsr-audio",
+    "version": "0.0.12",
+    "description": "React audio player ",
+    "author": "ionson100",
+    "license": "MIT",
+    "keywords": [
+        "react",
+        "audio player",
+        "audiopalyer"
+    ],
+    "repository": "https://github.com/ionson100/bsr-audio",
+    "main": "dist/cjs/index.js",
+    "module": "dist/esm/index.js",
+    "types": "dist/index.d.ts",
+    "homepage": "https://ionson100.github.io/wwwroot/index.html#page=33-2",
+    "files": [
+        "dist",
+        "README.md"
+    ],
+    "peerDependencies": {
+        "react": "*"
+    },
+    "scripts": {
+        "build": "rollup -c --bundleConfigAsCjs && @powershell copy  ./src/audio/index.css ./dist"
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "devDependencies": {
+        "@rollup/plugin-commonjs": "^25.0.7",
+        "@rollup/plugin-node-resolve": "^15.2.3",
+        "@rollup/plugin-terser": "^0.4.4",
+        "@rollup/plugin-typescript": "^11.1.6",
+        "@types/jest": "^27.5.2",
+        "@types/node": "^16.18.97",
+        "@types/react": "^18.3.2",
+        "@types/react-dom": "^18.3.0",
+        "@types/uuid": "^10.0.0",
+        "eslint": "^7.32.0",
+        "eslint-plugin-react": "^7.26.1",
+        "postcss": "^8.4.38",
+        "postcss-modules": "^6.0.0",
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1",
+        "react-icons": "^5.5.0",
+        "react-scripts": "5.0.1",
+        "rollup": "^4.17.2",
+        "rollup-plugin-css-only": "^4.5.2",
+        "rollup-plugin-dts": "^6.1.0",
+        "rollup-plugin-import-css": "^3.5.0",
+        "rollup-plugin-lib-style": "^1.2.6",
+        "rollup-plugin-peer-deps-external": "^2.2.4",
+        "rollup-plugin-postcss": "^4.0.2",
+        "typescript": "^4.9.5"
+    }
 }
