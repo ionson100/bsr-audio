@@ -47,7 +47,7 @@ type state={
 }
 
 
-export default class BsrAudio extends React.Component<propsAudio, state>{
+export  class BsrAudio extends React.Component<propsAudio, state>{
      audioRef = React.createRef<HTMLAudioElement>();
      curMode='';
 

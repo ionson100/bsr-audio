@@ -36,7 +36,7 @@ type state = {
     slider: number;
     random?: boolean;
 };
-export default class BsrAudio extends React.Component<propsAudio, state> {
+export declare class BsrAudio extends React.Component<propsAudio, state> {
     audioRef: React.RefObject<HTMLAudioElement>;
     curMode: string;
     constructor(props: propsAudio);

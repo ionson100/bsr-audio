@@ -1,6 +1,6 @@
 {
     "name": "bsr-audio",
-    "version": "0.0.14",
+    "version": "0.0.15",
     "description": "React audio player ",
     "author": "ionson100",
     "license": "MIT",
@@ -68,5 +68,8 @@
         "rollup-plugin-peer-deps-external": "^2.2.4",
         "rollup-plugin-postcss": "^4.0.2",
         "typescript": "^4.9.5"
+    },
+    "dependencies": {
+        "bsr-audio": "github:ionson100/bsr-audio"
     }
 }

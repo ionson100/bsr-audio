@@ -78,7 +78,7 @@ function styleInject(css, ref) {
 var css_248z = ":root {\r\n    --color-input: #ababac;\r\n    --font-size-audio:15px;\r\n    --back-box: #737272;\r\n    --icon-color: #efecec;\r\n    --icon-color-hover: #c9c6c6;\r\n    --icon-color-active: #efecec;\r\n}\r\n\r\n\r\n.box-flex {\r\n    width: 100%;\r\n    display: flex;\r\n    align-items: center;\r\n}\r\n\r\n.audio-box{\r\n    padding-top: 5px;\r\n    padding-bottom:  5px;\r\n    color: #f4f4f9;;\r\n    font-size: var(--font-size-audio);\r\n    width: 100%;\r\n    height: fit-content;\r\n    background-color: var(--back-box);\r\n}\r\n.audio-input{\r\n    width: 100%;\r\n}\r\n.audio-input-volume{\r\n    width: 100px;\r\n    margin-right: 10px;\r\n}\r\n.audio-timer{\r\n    text-align: center;\r\n    width: 40px;\r\n    padding: 0 10px;\r\n}\r\n.audio-label-host{\r\n    width: 100%;\r\n    padding-left: 15px;\r\n    white-space: nowrap;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    text-align: left;\r\n}\r\n.no-select {\r\n    -webkit-touch-callout: none; /* iOS Safari */\r\n    -webkit-user-select: none; /* Safari */\r\n    -khtml-user-select: none; /* Konqueror HTML */\r\n    -moz-user-select: none; /* Old versions of Firefox */\r\n    -ms-user-select: none; /* Internet Explorer/Edge */\r\n    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */\r\n}\r\n.audio-icon{\r\n    margin: 0 10px;\r\n    color: var(--icon-color);\r\n    cursor: pointer;\r\n}\r\n.audio-icon:hover{\r\n    color: var(--icon-color-hover);\r\n}\r\n.audio-icon:active{\r\n    color: var(--icon-color-active);\r\n}\r\n.icon-volume{\r\n    color: var(--color-input);\r\n}\r\n\r\n\r\n\r\n\r\n.audio-box input[type=\"range\"] {\r\n    background-color: transparent;\r\n    -webkit-appearance: none;\r\n    -moz-appearance: none;\r\n    appearance: none;\r\n\r\n    height: 18px;\r\n    border: none;\r\n    border-radius: 4px;\r\n    overflow: hidden;\r\n}\r\n\r\n\r\n.audio-box input[type=\"range\"]::-webkit-slider-thumb {\r\n    -webkit-appearance: none;\r\n    appearance: none;\r\n    background-color: var(--color-input);\r\n    border: 0 solid var(--color-input);;\r\n    border-radius: 50%;\r\n    height: 18px;\r\n    width: 18px;\r\n    margin-top: -7px;\r\n    box-shadow: calc(-100vmax - 18px) 0 0 100vmax var(--color-input);;\r\n    clip-path: polygon(\r\n            100% 0,\r\n            2px 0,\r\n            0 7px,\r\n            -100vmax 7px,\r\n            -100vmax 11px,\r\n            0 11px,\r\n            2px 100%,\r\n            100% 100%\r\n    );\r\n}\r\n\r\n\r\n.audio-box input[type=\"range\"]::-moz-range-thumb {\r\n    -moz-appearance: none;\r\n    appearance: none;\r\n    background-color: var(--color-input);;\r\n    border: 0 solid var(--color-input);;\r\n    border-radius: 50%;\r\n    height: 18px;\r\n    width: 18px;\r\n    margin-top: -7px;\r\n}\r\n\r\n.audio-box input[type=\"range\"]::-webkit-slider-runnable-track {\r\n    height: 4px;\r\n    border-radius: 4px;\r\n    border: 0 solid #fff;\r\n    box-shadow: 0 0 0 #353535;\r\n    background: #d7d7d7;\r\n}\r\n\r\n.audio-box input[type=\"range\"]::-moz-range-track {\r\n    height: 4px;\r\n    border-radius: 4px;\r\n    border: 0 solid #fff;\r\n    box-shadow: 0 0 0 #353535;\r\n    background: #d7d7d7;\r\n}\r\n.host-loop{\r\n    width: fit-content;\r\n    text-align: left;\r\n    padding-left: 5px;\r\n}\r\n.host-loop-mode2{\r\n    padding-top: 5px;\r\n    width: fit-content;\r\n\r\n}\r\n.host-volume{\r\n    width: fit-content;\r\n}\r\n.host-volume-mode2{\r\n    width: fit-content;\r\n}\r\n.host-buttons{\r\n    align-items: center;\r\n    justify-content: center;\r\n}\r\n.host-buttons-mode2{\r\n    width: fit-content;\r\n    align-items: center;\r\n    justify-content: center;\r\n}";
 styleInject(css_248z);
 
-/** @class */ ((function (_super) {
+var BsrAudio = /** @class */ (function (_super) {
     __extends(BsrAudio, _super);
     function BsrAudio(props) {
         var _this = this;
@@ -258,7 +258,7 @@ styleInject(css_248z);
         return (jsx(Fragment, { children: this.curMode === 'mode1' ? this.mode1() : this.mode2() }));
     };
     return BsrAudio;
-})(React.Component));
+}(React.Component));
 var formatTime = function (time, isTotal) {
     if (isTotal === void 0) { isTotal = false; }
     if (isTotal && time === 0) {
@@ -268,3 +268,5 @@ var formatTime = function (time, isTotal) {
     var seconds = Math.floor(time % 60);
     return "".concat(minutes, ":").concat(seconds < 10 ? '0' : '').concat(seconds);
 };
+
+export { BsrAudio };
