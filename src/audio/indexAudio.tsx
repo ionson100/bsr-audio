@@ -221,7 +221,7 @@ export  class BsrAudio extends React.Component<propsAudio, state>{
     }
 
     GerAudioTag=()=>{
-        return this.audioRef;
+        return this.audioRef.current;
     }
     private mode1(){
         return (

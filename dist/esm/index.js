@@ -147,7 +147,7 @@ var BsrAudio = /** @class */ (function (_super) {
             _this.setState({ volume: volume });
         };
         _this.GerAudioTag = function () {
-            return _this.audioRef;
+            return _this.audioRef.current;
         };
         _this.curMode = (_a = _this.props.mode) !== null && _a !== void 0 ? _a : 'mode1';
         _this.state = {

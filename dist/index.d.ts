@@ -54,7 +54,7 @@ declare class BsrAudio extends React.Component<propsAudio, state> {
     SetPause(): void;
     SetVolume: (volume: number) => void;
     SetTimer(time: number): void;
-    GerAudioTag: () => React.RefObject<HTMLAudioElement>;
+    GerAudioTag: () => HTMLAudioElement | null;
     private mode1;
     private renderAudio;
     private mode2;
