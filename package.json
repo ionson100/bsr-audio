@@ -1,6 +1,6 @@
 {
     "name": "bsr-audio",
-    "version": "0.0.18",
+    "version": "0.0.20",
     "description": "React audio player ",
     "author": "ionson100",
     "license": "MIT",
@@ -13,7 +13,7 @@
     "main": "dist/cjs/index.js",
     "module": "dist/esm/index.js",
     "types": "dist/index.d.ts",
-    "homepage": "https://ionson100.github.io/wwwroot/index.html#page=33-2",
+    "homepage": "https://ionson100.github.io/wwwroot/index.html#page=32-2",
     "files": [
         "dist",
         "README.md"
