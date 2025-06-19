@@ -1,6 +1,6 @@
 # bsr-audio
 
-> React file upload
+> React audio player
 
 [![NPM](https://img.shields.io/npm/v/bsr-audio.svg)](https://www.npmjs.com/package/bsr-audio) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
@@ -13,7 +13,7 @@ npm install --save bsr-audio
 ## Usage
 
 ```tsx
-import {FileUpload} from 'bsr-audio'
+import {BsrAudio} from 'bsr-audio'
 import 'bsr-audio/dist/index.css'
 
 function App() {
